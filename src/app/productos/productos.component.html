@@ -1,0 +1,42 @@
+<div class="container border-light-subtle">
+    <div class="card border-light-subtle">
+        <div class="card-header">
+            <h1 class="title">Listado de Artículos</h1>
+        </div>
+        <div class="card-body text-center text-primary">
+            <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">ID de Artículo</th>
+                    <th scope="col">Nombre Artículo</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Existencia</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col" colspan="2">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let articulo of articulos">
+                    <th scope="row">{{ articulo.idArticulo }}</th>
+                    <td>{{ articulo.nombreArticulo }}</td>
+                    <td>{{ articulo.descripcion }}</td>
+                    <td>{{ articulo.existencia }}</td>
+                    <td>{{ articulo.precio }}</td>
+                    <td>{{ articulo.idCategoria?.nombreCategoria }}</td> <!-- Aquí -->
+                    <td>
+                        <button type="button" class="btn btn-success" [routerLink]="['/articulosForm', articulo.idArticulo]">
+                            Actualizar
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" (click)="eliminarArticulo(articulo.idArticulo)">
+                            Eliminar
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
